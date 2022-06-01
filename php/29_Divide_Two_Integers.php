@@ -22,7 +22,7 @@ class Solution {
         
         while ($dividend >= $divisor) {
             $shift = 0;
-            $shiftedDivisor = $Divisor;
+            $shiftedDivisor = $divisor;
             while ($dividend >= $shiftedDivisor) {
                 $shift++;
                 $shiftedDivisor = $divisor << $shift;
