@@ -8,29 +8,15 @@ class Solution {
      * @return Boolean
      */
     function canConstruct($ransomNote, $magazine) {
-        $arRansom = [];
-        $arMagazine = [];
-        
-        for ($i = 0; $i < strlen($ransomNote); $i++) {
-            $arRansom[$ransomNote[$i]]++;
+        $countChars = count_chars($magazine, 1);
+        for ($i = 0; $i < strlen($ransomNote); ++$i) {
+            if (empty($countChars[ord($ransomNote[$i])])) {
+                return false;
+            } 
+           --$countChars[ord($ransomNote[$i])];
         }
-        for ($i = 0; $i < strlen($magazine); $i++) {
-            $arMagazine[$magazine[$i]]++;
-        }
-        
-        $return = true;
-        foreach ($arRansom as $letter => $countInString) {
-            
-            if (
-                !isset($arMagazine[$letter])
-                || $arMagazine[$letter] < $countInString
-            ) {
-                $return = false;
-                break;
-            }
-        }
-        
-        return $return;
+
+        return true;
     }
 }
 
