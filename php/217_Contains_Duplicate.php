@@ -11,5 +11,5 @@ class Solution {
             count($nums) !== count(array_unique($nums));
         
     }
-}F
+}
 
