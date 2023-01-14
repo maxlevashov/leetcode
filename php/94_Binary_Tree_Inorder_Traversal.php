@@ -28,9 +28,7 @@ class Solution
 
         $arReturn = [];
         $stack = [];
-
         $current = $root;
-
         while ($current != null || !empty($stack)) {
             while ($current != null) {
                 $stack[] = $current;
