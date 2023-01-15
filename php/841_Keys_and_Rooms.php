@@ -16,7 +16,6 @@ class Solution
         while (!empty($arKeys)) {
             $currentKey = array_pop($arKeys);
             foreach ($rooms[$currentKey] as $key) {
-                var_dump($key);
                 if (!$arVisited[$key]) {
                     $arVisited[$key] = true;
                     $arKeys[] = $key;
