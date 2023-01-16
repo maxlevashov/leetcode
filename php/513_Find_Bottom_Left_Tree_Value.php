@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     public $val = null;
+ *     public $left = null;
+ *     public $right = null;
+ *     function __construct($val = 0, $left = null, $right = null) {
+ *         $this->val = $val;
+ *         $this->left = $left;
+ *         $this->right = $right;
+ *     }
+ * }
+ */
+class Solution {
+
+    /**
+     * @param TreeNode $root
+     * @return Integer
+     */
+    function findBottomLeftValue($root) {
+        $queue = [];
+        $queue[] = $root;
+        while (!empty($queue)){
+            $root = array_shift($queue);
+            if ($root->right != null) {
+                $queue[] = $root->right;
+            }
+            if ($root->left != null) {
+                $queue[] = $root->left;
+            }
+        }
+        
+        return $root->val;
+    }
+}
