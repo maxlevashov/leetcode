@@ -13,17 +13,17 @@ var myAtoi = function(s) {
         counter++;
     }
 
-    if (s[counter] == '+' || s[counter] == '-') {
-        sign = s[counter] == '+' ? 1 : -1;
+    if (s[counter] === '+' || s[counter] === '-') {
+        sign = s[counter] === '+' ? 1 : -1;
         counter++;
     }
 
     while (s[counter] >= '0' && s[counter] <= '9') {
         result = (result * 10) + (s[counter] - 0);
-        if (sign == 1 && result > INT_MAX) {
+        if (sign === 1 && result > INT_MAX) {
             return INT_MAX;
         }
-        if (sign == -1 && result > INT_MAX + 1) {
+        if (sign === -1 && result > INT_MAX + 1) {
             return INT_MIN;
         }
         counter++;
