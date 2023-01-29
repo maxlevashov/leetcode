@@ -26,7 +26,7 @@ class Solution
         }
 
         while ($s[$counter] >= '0' && $s[$counter] <= '9') {
-            $result = ($result * 10) + ($s[$counter] - 0);
+            $result = ($result * 10) + $s[$counter];
             if ($sign == 1 && $result > self::INT_MAX) {
                 return self::INT_MAX;
             }
