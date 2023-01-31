@@ -16,6 +16,7 @@ class Solution
         }
 
         sort($ageScorePair);
+        
         return $this->findMaxScore($ageScorePair);
     }
 
@@ -38,6 +39,7 @@ class Solution
             }
             $answer = max($answer, $dp[$i]);
         }
+        
         return $answer;
     }
 
