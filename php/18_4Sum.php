@@ -57,13 +57,17 @@ class Solution
         $right = count($nums) - 1;
         while ($left < $right) {
             $sum = $nums[$left] + $nums[$right];
-            if ($sum < $target 
-                    || ($left > $start 
-                        && $nums[$left - 1] == $nums[$left])) {
+            if (
+                $sum < $target 
+                || ($left > $start 
+                    && $nums[$left - 1] == $nums[$left])
+            ) {
                 ++$left;
-            } elseif ($sum > $target 
-                    || ($right < count($nums) - 1 
-                        && $nums[$right] == $nums[$right + 1])) {
+            } elseif (
+                $sum > $target 
+                || ($right < count($nums) - 1 
+                    && $nums[$right] == $nums[$right + 1])
+            ) {
                 --$right;
             } else {
                 $result[] = [$nums[$left++], $nums[$right--]];
