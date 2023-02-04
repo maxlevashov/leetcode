@@ -1,6 +1,7 @@
 <?php
 
-class Solution {
+class Solution
+{
 
     const CHARS_COUNT = 26;
 
@@ -9,7 +10,8 @@ class Solution {
      * @param String $s2
      * @return Boolean
      */
-    function checkInclusion($s1, $s2) {
+    function checkInclusion($s1, $s2)
+    {
         if (strlen($s1) > strlen($s2)) {
             return false;
         }
@@ -50,5 +52,5 @@ class Solution {
 
         return $count == self::CHARS_COUNT;
     }
-}
 
+}
