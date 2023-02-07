@@ -27,5 +27,4 @@ class Solution
 
         return $right - $left;
     }
-
 }
