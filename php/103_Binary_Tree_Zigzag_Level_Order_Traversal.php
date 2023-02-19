@@ -24,21 +24,23 @@ class Solution {
         if ($root == null) {
             return $result;
         }
-        $queue = [$root];
+        $queue = new SplQueue();
+        $queue->enqueue($root);
         $i = 0;
 
-        while (!empty($queue)) {
-            $queueCount = count($queue);
+        while (!$queue->isEmpty()) {
+            $queueCount = $queue->count();
+            var_dump($queueCount);
             $temp = [];
             while ($queueCount--){
-                $first = array_shift($queue);
+                $first = $queue->dequeue();
                 $temp[] = $first->val;
                
                 if ($first->left !== null) {
-                    $queue[] = $first->left;
+                    $queue->enqueue($first->left);
                 }
                 if ($first->right !== null) { 
-                    $queue[] = $first->right;
+                    $queue->enqueue($first->right);
                 }
             }
             if ($i++ % 2 !== 0) {
