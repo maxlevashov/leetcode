@@ -30,7 +30,6 @@ class Solution {
 
         while (!$queue->isEmpty()) {
             $queueCount = $queue->count();
-            var_dump($queueCount);
             $temp = [];
             while ($queueCount--){
                 $first = $queue->dequeue();
