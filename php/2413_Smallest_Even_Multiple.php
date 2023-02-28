@@ -1,15 +1,15 @@
 <?php
 
-class Solution {
+class Solution
+{
 
     /**
      * @param Integer $n
      * @return Integer
      */
-    function smallestEvenMultiple($n) {
+    function smallestEvenMultiple($n)
+    {
 
         return $n & 1 ? $n * 2 : $n;
-
     }
 }
-
