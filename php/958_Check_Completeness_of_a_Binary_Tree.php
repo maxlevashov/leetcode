@@ -23,17 +23,19 @@ class Solution
     function isCompleteTree($root)
     {
         $end = false;
-        $queue = [$root];
-        while (!empty($queue)) {
-            $node = array_shift($queue);
+        $queue = new SplQueue();
+        $queue->enqueue($root);
+
+        while (!$queue->isEmpty()) {
+            $node = $queue->dequeue();
             if ($node === null) {
                 $end = true;
             } else {
                 if ($end) {
                     return false;
                 }
-                $queue[] = $node->left;
-                $queue[] = $node->right;
+                $queue->enqueue($node->left);
+                $queue->enqueue($node->right);
             }
         }
 
