@@ -34,4 +34,3 @@ function isCompleteTree(root: TreeNode | null): boolean {
     return true;
 };
 
-
