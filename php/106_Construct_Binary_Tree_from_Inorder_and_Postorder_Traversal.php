@@ -14,6 +14,9 @@
  * }
  */
 class Solution {
+    
+    protected $inorder;
+    protected $postorder;
 
     /**
      * @param Integer[] $inorder
@@ -21,13 +24,17 @@ class Solution {
      * @return TreeNode
      */
     function buildTree($inorder, $postorder) {
-        return $this->buildTreeRecursive($inorder, 0, count($inorder) - 1, 
-            $postorder, 0, count($postorder) - 1);
+        $this->inorder = $inorder;
+        $this->postorder = $postorder;
+
+        return $this->buildTreeRecursive(
+            0, count($inorder) - 1, 
+            0, count($postorder) - 1);
     }
 
     protected function buildTreeRecursive(
-        $inorder, $leftInorder, $rightInorder, 
-        $postorder, $leftPostorder, $rightPostorder
+        $leftInorder, $rightInorder, 
+        $leftPostorder, $rightPostorder
     ) {
         if (
             $leftInorder > $rightInorder 
@@ -36,25 +43,34 @@ class Solution {
             return null;
         }
         
-        $rootVal = $postorder[$rightPostorder];
+        list($root, $rootIndex) = $this->getRootData(
+            $leftInorder, $rightInorder, $rightPostorder);        
+        $leftSize = $rootIndex - $leftInorder;
+        $rightSize = $rightInorder - $rootIndex;
+
+        $root->left = $this->buildTreeRecursive(
+            $leftInorder, $rootIndex - 1, 
+            $leftPostorder, $leftPostorder + $leftSize - 1);
+        $root->right = $this->buildTreeRecursive( 
+            $rootIndex + 1, $rightInorder, 
+            $rightPostorder - $rightSize, $rightPostorder - 1);
+        
+        return $root;
+    }
+
+    protected function getRootData($leftInorder, $rightInorder, $rightPostorder) {
+        $rootVal = $this->postorder[$rightPostorder];
         $root = new TreeNode($rootVal);
         
         $rootIndex = 0;
         for ($i = $leftInorder; $i <= $rightInorder; $i++) {
-            if ($inorder[$i] == $rootVal) {
+            if ($this->inorder[$i] == $rootVal) {
                 $rootIndex = $i;
                 break;
             }
         }
-        
-        $leftSize = $rootIndex - $leftInorder;
-        $rightSize = $rightInorder - $rootIndex;
-        $root->left = $this->buildTreeRecursive($inorder, $leftInorder, $rootIndex - 1, 
-            $postorder, $leftPostorder, $leftPostorder + $leftSize - 1);
-        $root->right = $this->buildTreeRecursive($inorder, $rootIndex + 1, $rightInorder, 
-            $postorder, $rightPostorder - $rightSize, $rightPostorder - 1);
-        
-        return $root;
+
+        return [$root, $rootIndex];
     }
 }
 
