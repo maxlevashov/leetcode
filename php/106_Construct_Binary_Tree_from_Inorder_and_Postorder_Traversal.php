@@ -13,7 +13,8 @@
  *     }
  * }
  */
-class Solution {
+class Solution 
+{
     
     protected $inorder;
     protected $postorder;
@@ -23,7 +24,8 @@ class Solution {
      * @param Integer[] $postorder
      * @return TreeNode
      */
-    function buildTree($inorder, $postorder) {
+    function buildTree($inorder, $postorder) 
+    {
         $this->inorder = $inorder;
         $this->postorder = $postorder;
 
@@ -58,7 +60,8 @@ class Solution {
         return $root;
     }
 
-    protected function getRootData($leftInorder, $rightInorder, $rightPostorder) {
+    protected function getRootData($leftInorder, $rightInorder, $rightPostorder) 
+    {
         $rootVal = $this->postorder[$rightPostorder];
         $root = new TreeNode($rootVal);
         
