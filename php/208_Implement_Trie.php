@@ -1,32 +1,37 @@
 <?php
 
-class TrieNode {
+class TrieNode
+{
 
     public $isCompleteWord;
     public $children;
 
-    public function __construct() {
-        $this->isCompleteWord = false; 
+    public function __construct()
+    {
+        $this->isCompleteWord = false;
         $this->children = array_fill(0, 26, 0);
     }
-};
 
+}
 
-class Trie {
+class Trie
+{
 
     protected $root = null;
 
     /**
      */
-    function __construct() {
+    function __construct()
+    {
         $this->root = new TreeNode();
     }
-  
+
     /**
      * @param String $word
      * @return NULL
      */
-    function insert($word) {
+    function insert($word)
+    {
         $node = $this->root;
         for ($i = 0; $i < strlen($word); $i++) {
             $index = ord($word[$i]) - ord('a');
@@ -37,12 +42,13 @@ class Trie {
         }
         $node->isCompleteWord = true;
     }
-  
+
     /**
      * @param String $word
      * @return Boolean
      */
-    function search($word) {
+    function search($word)
+    {
         $node = $this->root;
         for ($i = 0; $i < strlen($word); $i++) {
             $index = ord($word[$i]) - ord('a');
@@ -53,22 +59,24 @@ class Trie {
         }
         return $node->isCompleteWord;
     }
-  
+
     /**
      * @param String $prefix
      * @return Boolean
      */
-    function startsWith($prefix) {
+    function startsWith($prefix)
+    {
         $node = $this->root;
         for ($i = 0; $i < strlen($prefix); $i++) {
             $index = ord($prefix[$i]) - ord('a');
             if ($node->children[$index] == null) {
-                return false; 
+                return false;
             }
             $node = $node->children[$index];
         }
         return true;
     }
+
 }
 
 /**
