@@ -13,11 +13,14 @@ class Solution
         $stringIndex = 0;
         $patternIndex = 0;
         $match = 0;
-        $starIndex = -1;   
-        
-        while ($stringIndex < strlen($str)){
+        $starIndex = -1;
+        $stringStrlen = strlen($str);
+        $patternStrlen = strlen($pattern);  
+
+        while ($stringIndex < $stringStrlen) {
+
             if (
-                $patternIndex < strlen($pattern) 
+                $patternIndex < $patternStrlen 
                 && (
                     $pattern[$patternIndex] == '?' 
                     || $str[$stringIndex] == $pattern[$patternIndex]
@@ -25,24 +28,30 @@ class Solution
             ) {
                 $stringIndex++;
                 $patternIndex++;
-            } elseif ($patternIndex < strlen($pattern) && $pattern[$patternIndex] == '*') {
+
+            } elseif ($patternIndex < $patternStrlen && $pattern[$patternIndex] == '*') {
                 $starIndex = $patternIndex;
                 $match = $stringIndex;
                 $patternIndex++;
-            } elseif ($starIndex != -1){
+
+            } elseif ($starIndex != -1) {
                 $patternIndex = $starIndex + 1;
                 $match++;
                 $stringIndex = $match;
+                
             } else {
                 return false;
             }
         }
         
-        while ($patternIndex < strlen($pattern) && $pattern[$patternIndex] == '*') {
+        while (
+            $patternIndex < $patternStrlen 
+            && $pattern[$patternIndex] == '*'
+        ) {
             $patternIndex++;
         }
         
-        return $patternIndex == strlen($pattern);
+        return $patternIndex == $patternStrlen;
     }
 }
 
