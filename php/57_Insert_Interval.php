@@ -15,7 +15,7 @@ class Solution
             return $a[0] > $b[0];
         }); 
         
-		$merged = [];
+	$merged = [];
         $start = $intervals[0][0];
         $end = $intervals[0][1];
         
@@ -29,7 +29,7 @@ class Solution
             }
         }
         $merged[] = [$start, $end];
-		return $merged;
+	return $merged;
     }
 }
 
