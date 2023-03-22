@@ -38,12 +38,12 @@ class Solution {
     protected function calculateMinScore() {
         while (!$this->queue->isEmpty()) {
             $node = $this->queue->dequeue();
-            foreach ($this->graph[$node] as $adj => $score) {
-                if (!isset($this->visited[$adj])) {
-                    $this->queue->enqueue($adj);
-                    $this->visited[$adj] = false;
+            foreach ($this->graph[$node] as $vertex => $weight) {
+                if (!isset($this->visited[$vertex])) {
+                    $this->queue->enqueue($vertex);
+                    $this->visited[$vertex] = false;
                 }
-                $this->minScore = min($this->minScore, $score);          
+                $this->minScore = min($this->minScore, $weight);          
             }
         }
     }
