@@ -16,7 +16,7 @@ class Solution {
         
         $this->init($roads);
         
-        $this->calculateMinScore();
+        $this->bfs();
 
         return $this->minScore;
     }
@@ -35,7 +35,7 @@ class Solution {
         $this->queue->enqueue(1);
     }
 
-    protected function calculateMinScore() {
+    protected function bfs() {
         while (!$this->queue->isEmpty()) {
             $node = $this->queue->dequeue();
             foreach ($this->graph[$node] as $vertex => $weight) {
