@@ -19,17 +19,17 @@ public:
             return NULL;
         }
 
-                    if (current->val == value) {
+        if (current->val == value) {
             return current;
         }
-                    TreeNode* left = dfs(current->left, value);
-                    if (left) {
+        TreeNode* left = dfs(current->left, value);
+        if (left) {
             return left;
         }
-                    TreeNode* right = dfs(current->right, value);
-                    if (right) {
+        TreeNode* right = dfs(current->right, value);
+        if (right) {
             return right;
         }
 	return NULL;
-	}
+    }
 };
