@@ -11,8 +11,8 @@ func replaceElements(arr []int) []int {
 }
 
 func max(x, y int) int {
-	if x < y {
-		return y
-	}
-	return x
+    if x < y {
+        return y
+    }
+    return x
 }
