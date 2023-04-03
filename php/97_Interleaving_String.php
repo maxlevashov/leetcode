@@ -14,11 +14,11 @@ class Solution
         if (strlen($s1) + strlen($s2) != strlen($s3)) {
             return false;
         }
-		if (strlen($s1) < strlen($s2)) {
+	if (strlen($s1) < strlen($s2)) {
             $this->swap($s1, $s2);
         }
         
-		$m = strlen($s1);
+	$m = strlen($s1);
         $n = strlen($s2);
 			
         $dp = array_fill(0, $n + 1, false);
