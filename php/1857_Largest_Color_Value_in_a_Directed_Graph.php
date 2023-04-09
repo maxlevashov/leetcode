@@ -3,7 +3,6 @@
 class Solution 
 {
 
-    
     /**
      * @param String $colors
      * @param Integer[][] $edges
