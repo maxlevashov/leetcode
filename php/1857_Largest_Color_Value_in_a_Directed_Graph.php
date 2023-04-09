@@ -45,7 +45,6 @@ class Solution
             $visited++;
             foreach ($graph[$u] as $v) {
                 for ($i = 0; $i < $k; $i++)
-                
                     $counts[$v][$i] = max(
                         $counts[$v][$i], 
                         $counts[$u][$i] + (ord($colors[$v]) - ord('a') == $i ? 1 : 0)
