@@ -1,6 +1,6 @@
 <?php
 
-class Solution
+class Solution 
 {
 
     const MAP = [
@@ -13,25 +13,25 @@ class Solution
      * @param String $s
      * @return Boolean
      */
-    function isValid($s)
+    function isValid($s) 
     {
-        $stack = [];
-
+        $stack = new SplStack();
+        
         for ($i = 0; $i < strlen($s); $i++) {
             $curChar = $s[$i];
-
+            
             if (isset(self::MAP[$curChar])) {
-                $topElement = empty($stack) ? '#' : array_pop($stack);
-
+                $topElement = $stack->isEmpty() ? '#' : $stack->pop();
+                
                 if ($topElement != self::MAP[$curChar]) {
                     return false;
                 }
             } else {
-                $stack[] = $curChar;
+                $stack->push($curChar);
             }
         }
-
-        return empty($stack);
+        
+        return $stack->isEmpty();
     }
-
+    
 }
