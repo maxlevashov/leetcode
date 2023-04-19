@@ -13,13 +13,15 @@
  *     }
  * }
  */
-class Solution {
+class Solution 
+{
 
     /**
      * @param TreeNode $root
      * @return Integer
      */
-    function longestZigZag($root) {
+    function longestZigZag($root) 
+    {
         $result = $this->dfs($root);
 
         return $result['max'];
