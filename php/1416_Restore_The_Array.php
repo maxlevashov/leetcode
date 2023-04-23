@@ -13,7 +13,8 @@ class Solution
         $mod = (int)1e9+7;
         $stringLen = strlen($s);
         $dp = array_fill(0, $stringLen, 0);
-        $dp[strlen($s)] = 1;
+        $dp[$stringLen] = 1;
+        
         for ($i = $stringLen - 1; $i >= 0; $i--) {
             $num = 0;
             $sum = 0;
@@ -27,6 +28,7 @@ class Solution
             }
             $dp[$i] = (int)($sum % $mod);
         }
+        
         return $dp[0];
     }
 
