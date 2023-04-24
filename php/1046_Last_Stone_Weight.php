@@ -1,32 +1,28 @@
 <?php
 
-class Solution 
+class Solution
 {
 
     /**
      * @param Integer[] $stones
      * @return Integer
      */
-    function lastStoneWeight($stones) 
+    function lastStoneWeight($stones)
     {
-        if (count($stones) == 1) {
-            return current($stones);
-        }
-        rsort($stones);
+        $queue = new SplPriorityQueue();
         
-        while (count($stones) > 1) {
-            if ($stones[0] - $stones[1] > 0) {
-                $stones[0] = $stones[0] - $stones[1];
-                unset($stones[1]);
-
-            } elseif ($stones[0] - $stones[1] == 0) {
-                unset($stones[1]);
-                unset($stones[0]);
+        foreach ($stones as  $stone) {
+            $queue->insert($stone, $stone);
+        }
+        while ($queue->count() > 1) {
+            $a = $queue->extract(); 
+            $b = $queue->extract();
+            if ($a != $b) {
+                $subtraction = abs($a - $b);
+                $queue->insert($subtraction, $subtraction);
             }
-            rsort($stones);
         }
         
-        return empty($stones) ? 0 : current($stones);
+        return $queue->isEmpty() ? 0 : $queue->top();
     }
 }
-
