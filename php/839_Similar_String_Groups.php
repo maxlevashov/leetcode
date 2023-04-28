@@ -28,8 +28,7 @@ class Solution
         $curr = $strs[$index];
         
         for ($i = 0; $i < count($strs); $i++) {     
-            if (!$visited[$i] && $this->isSimilar($curr, $strs[$i])) 
-            {
+            if (!$visited[$i] && $this->isSimilar($curr, $strs[$i])) {
                 $this->dfs($strs, $visited, $i);
             }      
         }
