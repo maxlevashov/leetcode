@@ -1,3 +1,3 @@
 # leetcode
 
-Solving tasks
+Solving problems
