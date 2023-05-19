@@ -10,10 +10,10 @@ class Solution
      */
     function wordBreak($s, $wordDict) 
     {
-        $n = strlen($s);
-        $dp = array_fill(0, $n, 0);
+        $stringLen = strlen($s);
+        $dp = array_fill(0, $stringLen, 0);
 
-        for ($i = -1; $i < $n; $i++) {
+        for ($i = -1; $i < $stringLen; $i++) {
             if ($i >= 0 && $dp[$i] == false) {
                 continue;
             }
@@ -21,7 +21,7 @@ class Solution
                 $j = 0;
                 while (
                     $j < strlen($word)
-                    && $i + 1 + $j < $n
+                    && $i + 1 + $j < $stringLen
                     && $word[$j] == $s[$i + 1 + $j]
                 ) {
                     $j++;
@@ -32,7 +32,7 @@ class Solution
             }
         }
 
-        return $dp[$n - 1];
+        return $dp[$stringLen - 1];
     }
 }
 
