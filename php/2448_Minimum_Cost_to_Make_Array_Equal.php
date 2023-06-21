@@ -29,7 +29,14 @@ class Solution
         return $result;
     }
 
-    protected function getCost(array $nums, array $cost, $all) 
+    /**
+     * 
+     * @param array $nums
+     * @param array $cost
+     * @param int $all
+     * @return int
+     */
+    protected function getCost(array $nums, array $cost, int $all): int
     {
         $totalCost = 0;
 
