@@ -29,7 +29,8 @@ class Solution
         return $result;
     }
 
-    protected function getCost(array $nums, array $cost, $all) {
+    protected function getCost(array $nums, array $cost, $all) 
+    {
         $totalCost = 0;
 
         for ($i = 0; $i < count($nums); $i++) {
