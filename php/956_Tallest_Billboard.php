@@ -1,12 +1,14 @@
 <?php
 
-class Solution {
+class Solution 
+{
 
     /**
      * @param Integer[] $rods
      * @return Integer
      */
-    function tallestBillboard($rods) {
+    function tallestBillboard($rods) 
+    {
         $sum = 0;
         foreach ($rods as $rod) {
             $sum += $rod;
@@ -22,7 +24,10 @@ class Solution {
                     continue;
                 }
                 $dp[$i + $rod] = max($dp[$i + $rod], $dpCopy[$i]);
-                $dp[abs($i - $rod)] = max($dp[abs($i - $rod)], $dpCopy[$i] + min($i, $rod));
+                $dp[abs($i - $rod)] = max(
+                    $dp[abs($i - $rod)], 
+                    $dpCopy[$i] + min($i, $rod)
+                );
             }
         }
 
