@@ -11,7 +11,8 @@ class Solution
      * @param Integer[][] $matrix
      * @return Integer
      */
-    function longestIncreasingPath($matrix) {
+    function longestIncreasingPath($matrix) 
+    {
         $maxVal = 0;
         $this->height = count($matrix);
         $this->width = count($matrix[0]);
