@@ -24,8 +24,8 @@ class Solution
         return $this->solve(0, $this->stringLen - 1) + 1;
     }
 
-    protected function solve(int $left, int $right)
-    : int {
+    protected function solve(int $left, int $right): int 
+    {
         if ($this->dp[$left][$right] != -1) {
             return $this->dp[$left][$right];
         }
