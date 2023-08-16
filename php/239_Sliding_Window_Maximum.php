@@ -9,6 +9,7 @@ class Solution
      * @return Integer[]
      */
     function maxSlidingWindow($nums, $k) 
+    {
         $dequeue = new SplQueue();
         $result = [];
         for ($i = 0; $i < $k; $i++) {
