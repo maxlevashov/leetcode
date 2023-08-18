@@ -10,26 +10,26 @@ class Solution
      */
     function maxSlidingWindow($nums, $k) 
     {
-        $dq = new SplQueue();
+        $dequeue = new SplQueue();
         $result = [];
         for ($i = 0; $i < $k; $i++) {
-            while (!$dq->isEmpty() && $nums[$i] >= $nums[$dq->top()]) {
-                $dq->pop();
+            while (!$dequeue->isEmpty() && $nums[$i] >= $nums[$dequeue->top()]) {
+                $dequeue->pop();
             }
-            $dq->push($i);
+            $dequeue->push($i);
         }
-        $result[] = $nums[$dq->bottom()];
+        $result[] = $nums[$dequeue->bottom()];
 
         for ($i = $k; $i < count($nums); $i++) {
-            if ($dq->bottom() == $i - $k) {
-                $dq->shift();
+            if ($dequeue->bottom() == $i - $k) {
+                $dequeue->shift();
             }
-            while (!$dq->isEmpty() && $nums[$i] >= $nums[$dq->top()]) {
-                $dq->pop();
+            while (!$dequeue->isEmpty() && $nums[$i] >= $nums[$dequeue->top()]) {
+                $dequeue->pop();
             }
 
-            $dq->push($i);
-            $result[] = $nums[$dq->bottom()];
+            $dequeue->push($i);
+            $result[] = $nums[$dequeue->bottom()];
         }
         
         return $result;
