@@ -76,7 +76,7 @@ class UnionFind
     public function __construct(int $n) 
     {
         $this->parent = array_fill(0, $n, 0);
-        $this->size = array_fill(0, $n, 1);;
+        $this->size = array_fill(0, $n, 1);
         $this->maxSize = 1;
         for ($i = 0; $i < $n; $i++) {
             $this->parent[$i] = $i;
