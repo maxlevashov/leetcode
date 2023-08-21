@@ -8,7 +8,7 @@ class Solution
      * @return Boolean
      */
     function repeatedSubstringPattern($s) 
-    
+    {
         $doubled = $s . $s;
         
         $sub = substr($doubled, 1, strlen($doubled) - 2);
