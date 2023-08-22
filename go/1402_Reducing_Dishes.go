@@ -1,5 +1,5 @@
 import (
-	"sort"
+    "sort"
 )
 
 func maxSatisfaction(satisfaction []int) int {
