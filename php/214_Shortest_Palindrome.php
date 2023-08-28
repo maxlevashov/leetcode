@@ -7,6 +7,7 @@ class Solution {
      * @return String
      */
     function shortestPalindrome($string) {
+        //kmp
         $lenString = strlen($string);
         $reverseString = strrev($string);
         $stringNew = $string . "#" . $reverseString;
