@@ -1,41 +1,48 @@
 <?php
 
-class MyStack {
+class MyStack 
+{
 
     protected $queue;
 
     /**
-     */
-    function __construct() {
+     * 
+    */
+    function __construct() 
+    {
         $this->queue = new SplQueue();
     }
-  
+
     /**
      * @param Integer $x
      * @return NULL
      */
-    function push($x) {
+    function push($x) 
+    {
         $this->queue->push($x);
     }
   
     /**
      * @return Integer
      */
-    function pop() {
+    function pop() 
+    {
         return $this->queue->pop();
     }
   
     /**
      * @return Integer
      */
-    function top() {
+    function top() 
+    {
         return $this->queue->top();
     }
   
     /**
      * @return Boolean
      */
-    function empty() {
+    function empty() 
+    {
         return $this->queue->isEmpty();
     }
 }
