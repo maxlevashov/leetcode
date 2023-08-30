@@ -5,11 +5,11 @@ class MyStack {
     protected $queue;
 
     /**
-     */
+ */
     function __construct() {
         $this->queue = new SplQueue();
     }
-  
+
     /**
      * @param Integer $x
      * @return NULL
