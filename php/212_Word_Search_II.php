@@ -67,5 +67,5 @@ class Node {
             $this->child[$i] = null;
         }
     }
-};
+}
 
