@@ -9,32 +9,31 @@ class Solution
      */
     function shortestPathLength($graph) 
     {
-        $n = count($graph); 
-        $q = new SplQueue(); 
-        $vis = [];
-        $all = (1 << $n) - 1; 
-        for ($i = 0; $i < $n; $i++) {
+        $size = count($graph); 
+        $queue = new SplQueue(); 
+        $visited = [];
+        $all = (1 << $size) - 1; 
+        for ($i = 0; $i < $size; $i++) {
             $maskValue = (1 << $i); 
             $thisNode = new Tuple($i, $maskValue, 1); 
-            $q->push($thisNode); 
-            $vis[serialize($i . $maskValue)] = false; 
+            $queue->push($thisNode); 
+            $visited[serialize($i . $maskValue)] = false; 
         }
 
-        while (!$q->isEmpty()) {
-            $curr = $q->shift(); 
+        while (!$queue->isEmpty()) {
+            $curr = $queue->shift(); 
             if ($curr->mask == $all) {
                 return $curr->cost - 1;
             }
             
             foreach ($graph[$curr->node] as $adj) {
                 $bothVisitedMask = $curr->mask; 
-                $bothVisitedMask = $bothVisitedMask | (1 << $adj); 
+                $bothVisitedMask = $bothVisitedMask | (1 << $adj);    
                 $thisNode = new Tuple($adj, $bothVisitedMask, $curr->cost + 1);
-                
-                if (!isset($vis[serialize($adj . $bothVisitedMask)])) {
-                    $vis[serialize($adj . $bothVisitedMask)] = false;  
+                if (!isset($visited[serialize($adj . $bothVisitedMask)])) {
+                    $visited[serialize($adj . $bothVisitedMask)] = false;  
                     
-                    $q->push($thisNode); 
+                    $queue->push($thisNode); 
                 }
             }
         }
