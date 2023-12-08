@@ -13,8 +13,8 @@ class Solution
         for ($i = strlen($num) - 1; $i >= 0; $i--) {
             if (intval($num[$i]) % 2 == 1) {
                 $result = $i > 0 
-                ? substr($num, 0, $i + 1)
-                : $num[$i];
+                    ? substr($num, 0, $i + 1)
+                    : $num[$i];
                 break;
             }
         }
