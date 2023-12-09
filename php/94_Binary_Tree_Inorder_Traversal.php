@@ -27,16 +27,18 @@ class Solution
         }
 
         $arReturn = [];
-        $stack = [];
+        $stack = new SplStack();
         $current = $root;
-        while ($current != null || !empty($stack)) {
+
+        while ($current || !$stack->isEmpty()) {
             while ($current != null) {
-                $stack[] = $current;
+                $stack->push($current);
                 $current = $current->left;
             }
-            $current = array_pop($stack);
+            $current = $stack->pop();
             $arReturn[] = $current->val;
             $current = $current->right;
+
         }
 
         return $arReturn;
