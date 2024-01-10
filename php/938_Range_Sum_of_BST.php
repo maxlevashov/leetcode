@@ -25,18 +25,19 @@ class Solution
     function rangeSumBST($root, $low, $high)
     {
         $sum = 0;
-        $stack = [$root];
-        while (!empty($stack)) {
-            $node = array_pop($stack);
+        $stack = new SplStack();
+        $stack->push($root);
+        while (!$stack->isEmpty()) {
+            $node = $stack->pop();
             if ($node !== null) {
                 if ($node->val >= $low && $node->val <= $high) {
                     $sum += $node->val;
                 }
                 if ($node->val >= $low) {
-                    $stack[] = $node->left;
+                    $stack->push($node->left);
                 }
                 if ($node->val <= $high) {
-                    $stack[] = $node->right;
+                    $stack->push($node->right);
                 }
             }
         }
