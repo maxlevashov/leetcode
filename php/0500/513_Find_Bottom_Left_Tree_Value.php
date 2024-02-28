@@ -13,22 +13,24 @@
  *     }
  * }
  */
-class Solution {
+class Solution 
+{
 
     /**
      * @param TreeNode $root
      * @return Integer
      */
-    function findBottomLeftValue($root) {
-        $queue = [];
-        $queue[] = $root;
-        while (!empty($queue)){
-            $root = array_shift($queue);
+    function findBottomLeftValue($root) 
+    {
+        $queue = new SplQueue();
+        $queue->unshift($root);
+        while (!$queue->isEmpty()) {
+            $root = $queue->pop();
             if ($root->right != null) {
-                $queue[] = $root->right;
+                $queue->unshift($root->right);
             }
             if ($root->left != null) {
-                $queue[] = $root->left;
+                $queue->unshift($root->left);
             }
         }
         
