@@ -13,13 +13,15 @@
  *     }
  * }
  */
-class Solution {
+class Solution 
+{
 
     /**
      * @param TreeNode $root
      * @return Integer
      */
-    function findBottomLeftValue($root) {
+    function findBottomLeftValue($root) 
+    {
         $queue = new SplQueue();
         $queue->unshift($root);
         while (!$queue->isEmpty()) {
